@@ -1,4 +1,6 @@
-/* --- CSS STYLE UTAMA --- */
+/* =========================================
+   1. CSS RESET & UTAMA (BODY)
+   ========================================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
@@ -9,7 +11,63 @@ body {
     margin: 0;
 }
 
-/* Pembungkus agar tabel berjejer rapi */
+.main-title {
+    /* Gradient Biru - Putih - Biru */
+    background: linear-gradient(to right, #1e12c9 20%, #07bcc2 50%, #1e12c9 80%);
+    background-size: 200% auto; /* Ukuran background besar untuk animasi */
+    
+    /* Membuat gradient muncul hanya di teks */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Styling Dasar */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid #333;
+    padding-bottom: 10px;
+    font-weight: bold;
+    display: inline-block; /* Agar border bottom mengikuti lebar teks */
+
+    /* Menjalankan Animasi Shimmer */
+    animation: shimmer 20s linear infinite;
+    transition: 0.3s;
+}
+
+/* Efek Hover */
+/* Perbaikan Hover Judul */
+.main-title:hover {
+    filter: drop-shadow(0 0 8px rgba(30, 18, 201, 0.5));
+    border-bottom-color: #1e12c9;
+}
+
+/* Penyatuan Flexible Table agar bisa melebar tapi tetap rapi */
+.flexible-table {
+    width: max-content;
+    min-width: 100%;
+    table-layout: auto; /* Biarkan browser mengatur lebar sesuai angka */
+    border-collapse: collapse;
+}
+
+.flexible-table td, .flexible-table th {
+    min-width: 85px; /* Lebar minimum untuk 6 digit */
+    padding: 8px 4px;
+}
+
+/* Pastikan kolom Nama Material cukup lebar */
+.flexible-table td:first-child, .flexible-table th:first-child {
+    min-width: 120px;
+}
+
+/* Animasi Shimmer (Geser Background) */
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Container utama untuk tabel-tabel LOT */
 .main-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -18,9 +76,19 @@ body {
     max-width: 1200px;
 }
 
-/* Spesifikasi Tabel: Lebar 330px */
+/* Container khusus tabel besar (Rekonsiliasi) agar bisa di-slide/scroll */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+
+/* =========================================
+   2. STYLING TABEL DASAR (LOT TABLES)
+   ========================================= */
 .lot-table {
-    width: 330px;
+    width: 330px; /* Lebar standar untuk tabel LOT */
     border-collapse: collapse;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -40,7 +108,6 @@ body {
     width: 60%;
 }
 
-/* Heading Tabel (Header LOT) */
 thead th {
     text-align: center !important;
     font-weight: bold;
@@ -48,38 +115,47 @@ thead th {
     padding: 12px;
 }
 
-/* --- PERBAIKAN WARNA HEADER (PASTIKAN CLASS INI ADA DI HTML) --- */
-.bg-green th { 
-    background-color: #00FF00 !important; 
-    color: black !important; 
-} /* LOT A */
+.lot-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
 
-.bg-orange th { 
-    background-color: #FFA500 !important; 
-    color: black !important; 
-} /* LOT B */
+/* =========================================
+   3. WARNA HEADER TABEL LOT
+   ========================================= */
+.bg-green th     { background-color: #00FF00 !important; color: black !important; } /* LOT A */
+.bg-orange th    { background-color: #FFA500 !important; color: black !important; } /* LOT B */
+.bg-purple th    { background-color: #800080 !important; color: white !important; } /* LOT C */
+.bg-yellow th    { background-color: #FFFF00 !important; color: black !important; } /* LOT D */
+.bg-lightblue th { background-color: #ADD8E6 !important; color: black !important; } /* LOT E */
+.bg-gray th      { background-color: #808080 !important; color: white !important; } /* SUMMARY */
 
-.bg-purple th { 
-    background-color: #800080 !important; 
-    color: white !important; 
-} /* LOT C */
+/* =========================================
+   4. TABEL REKONSILIASI MATERIAL (FLEXIBLE)
+   ========================================= */
+.flexible-table {
+    width: max-content; /* Melebar sesuai jumlah angka/content */
+    min-width: 100%;
+    table-layout: auto;
+}
 
-.bg-yellow th { 
-    background-color: #FFFF00 !important; 
-    color: black !important; 
-} /* LOT D */
+/* Header Biru Dongker / Navy */
+.bg-navy th {
+    background-color: #000080 !important;
+    color: white !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    padding: 12px 8px;
+}
 
-.bg-lightblue th { 
-    background-color: #ADD8E6 !important; 
-    color: black !important; 
-} /* LOT E */
+.material-label {
+    font-weight: bold;
+    text-align: center;
+    background-color: #f2f2f2 !important;
+}
 
-.bg-gray th { 
-    background-color: #808080 !important; 
-    color: white !important; 
-} /* RANGKUMAN */
-
-/* --- STYLING INPUT --- */
+/* =========================================
+   5. STYLING INPUT
+   ========================================= */
 input[type=number] {
     width: 100%;
     border: none;
@@ -88,25 +164,32 @@ input[type=number] {
     font-weight: bold;
     background: transparent;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
-/* Menghilangkan Spinner */
+/* Menghilangkan Spinner Panah Input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-input[type=number] {
-    -moz-appearance: textfield;
-}
+input[type=number] { -moz-appearance: textfield; }
 
+/* Input Readonly (Hasil Hitung) */
 .readonly-field {
     background-color: #eeeeee !important;
-    color: #555;
+    color: #333;
     cursor: not-allowed;
 }
 
-/* --- TOMBOL RESET --- */
+/* Lebar minimal kolom di tabel flexible agar menampung 6 digit */
+.flexible-table td {
+    min-width: 95px;
+}
+
+/* =========================================
+   6. TOMBOL RESET
+   ========================================= */
 .btn-reset {
     width: 100%;
     padding: 10px;
@@ -116,6 +199,7 @@ input[type=number] {
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
+    transition: 0.3s;
 }
 
 .btn-reset:hover {
@@ -126,6 +210,85 @@ tfoot td {
     padding: 0 !important;
     border: none !important;
 }
-.lot-table tbody tr:hover {
-    background-color: #f9f9f9;
+/* Container tabel dibuat lebih ringkas dengan batas maksimal */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Slide horizontal */
+    max-height: 400px; /* Batasi tinggi agar tidak terlalu panjang ke bawah */
+    overflow-y: auto; /* Scroll vertikal jika data banyak */
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Tabel Flexible dibuat lebih padat */
+.flexible-table {
+    width: max-content;
+    min-width: 100%;
+    table-layout: fixed; /* Mengunci lebar kolom agar konsisten */
+}
+
+/* Mengecilkan font header navy agar tidak memakan ruang */
+.bg-navy th {
+    background-color: #000080 !important;
+    color: white !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    padding: 6px 4px; /* Padding lebih kecil */
+    font-size: 11px; /* Font lebih kecil */
+    text-transform: uppercase;
+}
+
+/* Mengecilkan ukuran input di dalam tabel bawah */
+.flexible-table input[type=number] {
+    font-size: 12px; /* Ukuran angka lebih kecil */
+    padding: 4px 2px;
+    height: 25px;
+}
+
+/* Mengatur lebar kolom secara spesifik agar tidak terlalu melar */
+.flexible-table th, 
+.flexible-table td {
+    width: 80px; /* Lebar kolom standar lebih kecil */
+    padding: 4px !important;
+}
+
+/* Kolom "Nama Material" tetap agak lebar agar teks tidak terpotong */
+.flexible-table th:first-child, 
+.flexible-table td:first-child {
+    width: 110px;
+    font-size: 12px;
+}
+
+/* Warna input readonly agar lebih kontras tapi tetap tipis */
+.flexible-table .readonly-field {
+    background-color: #f8f9fa !important;
+    color: #000;
+}
+/* Style khusus untuk input Cap SP dan BK yang di-disable */
+.input-disabled-black {
+    background-color: #000000 !important; /* Warna hitam */
+    color: #000000 !important; /* Teks juga hitam agar tidak terlihat */
+    cursor: not-allowed;
+    border: none;
+}
+
+/* Pastikan input disabled tidak berubah saat di-hover */
+.input-disabled-black:disabled {
+    background-color: #000000 !important;
+}
+.bg-green-pekat th {
+    background-color: #006400 !important; /* Green pekat */
+    color: white !important;
+    text-align: center;
+    font-size: 11px;
+}
+
+.bg-lightgreen {
+    background-color: #90EE90 !important; /* Light Green */
+}
+
+.text-center {
+    text-align: center !important;
+    vertical-align: middle;
 }
