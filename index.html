@@ -1,134 +1,4 @@
-/* --- CSS STYLE UTAMA --- */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin: 0;
-}
-
-/* Pembungkus agar tabel berjejer rapi */
-.main-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    max-width: 1200px;
-}
-
-/* Spesifikasi Tabel: Lebar 330px */
-.lot-table {
-    width: 330px;
-    border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.lot-table th, .lot-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 13px;
-}
-
-.lot-table th {
-    text-align: left;
-    width: 60%;
-}
-
-/* Heading Tabel (Header LOT) */
-thead th {
-    text-align: center !important;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 12px;
-}
-
-/* --- PERBAIKAN WARNA HEADER (PASTIKAN CLASS INI ADA DI HTML) --- */
-.bg-green th { 
-    background-color: #00FF00 !important; 
-    color: black !important; 
-} /* LOT A */
-
-.bg-orange th { 
-    background-color: #FFA500 !important; 
-    color: black !important; 
-} /* LOT B */
-
-.bg-purple th { 
-    background-color: #800080 !important; 
-    color: white !important; 
-} /* LOT C */
-
-.bg-yellow th { 
-    background-color: #FFFF00 !important; 
-    color: black !important; 
-} /* LOT D */
-
-.bg-lightblue th { 
-    background-color: #ADD8E6 !important; 
-    color: black !important; 
-} /* LOT E */
-
-.bg-gray th { 
-    background-color: #808080 !important; 
-    color: white !important; 
-} /* RANGKUMAN */
-
-/* --- STYLING INPUT --- */
-input[type=number] {
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: center;
-    font-weight: bold;
-    background: transparent;
-    font-size: 14px;
-}
-
-/* Menghilangkan Spinner */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-.readonly-field {
-    background-color: #eeeeee !important;
-    color: #555;
-    cursor: not-allowed;
-}
-
-/* --- TOMBOL RESET --- */
-.btn-reset {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.btn-reset:hover {
-    background-color: #cc0000;
-}
-
-tfoot td {
-    padding: 0 !important;
-    border: none !important;
-}
-.lot-table tbody tr:hover {
-    background-color: #f9f9f9;
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -138,9 +8,9 @@ tfoot td {
 </head>
 <body>
     <h1 class="main-title">Rekonsiliasi Produk Filling</h1>
-
+ <h3>DETAIL PER LOT</h3>
     <div class="main-wrapper">
-
+       
     <table class="lot-table" id="table_A">
         <thead>
             <tr class="bg-green">
@@ -273,6 +143,9 @@ tfoot td {
             </tr>
         </tfoot>
     </table>
+</div> 
+<div class="summary-wrapper">Rangkuman semua Produk</div>
+    <h3>Rangkuman Semua Produk</h3>
 
     <table class="lot-table" id="table_summary">
         <thead>
@@ -299,6 +172,164 @@ tfoot td {
                 </td>
             </tr>
         </tfoot>
+    </table>
+</div>
+
+
+<h3>Rekonsiliasi Material Kemasan Primer</h3>
+<div class="table-container">
+    <table id="material_reconciliation_table" class="lot-table flexible-table">
+        <thead>
+            <tr class="bg-navy">
+                <th rowspan="2">Nama Material</th>
+                <th rowspan="2">Standar Pemakaian (A)</th>
+                <th colspan="3">Terpakai (B)</th>
+                <th colspan="3">Reject/Afkir (C)</th>
+                <th rowspan="2">FKM (jika ada) (F)</th>
+                <th rowspan="2">Sisa (D) (Teoritis) D=(A+F)-(B+C)</th>
+                <th rowspan="2">Sisa (E) (Hitung Aktual)</th>
+                <th rowspan="2">Selisih (D-E)</th>
+            </tr>
+            <tr class="bg-navy">
+                <th>FG</th>
+                <th>S</th>
+                <th>SP</th>
+                <th>PR</th>
+                <th>BK</th>
+                <th>LL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="material-label">Film</td>
+                <td><input type="number" id="jumlah_standar_film" class="input-field"></td>
+                <td><input type="number" id="jumlah_allFG_film" class="readonly-field" readonly></td>
+                <td><input type="number" id="jumlah_sampel_film" class="readonly-field" readonly></td>
+                <td><input type="number" id="jumlah_spesimen_film" class="readonly-field" readonly></td>
+                <td><input type="number" id="total_rejectpr_film" class="readonly-field" readonly></td>
+                <td><input type="number" id="total_rejectbk_film" class="readonly-field" readonly></td>
+                <td><input type="number" id="total_rejectll_film" class="input-field"></td>
+                <td><input type="number" id="fkm_film" class="input-field"></td>
+                <td><input type="number" id="sisa_teoritis_film" class="readonly-field" readonly></td>
+                <td><input type="number" id="sisa_aktual_film" class="input-field"></td>
+                <td><input type="number" id="selisih_film" class="readonly-field" readonly></td>
+            </tr>
+            <tr>
+                <td class="material-label">Port</td>
+                <td><input type="number" id="jumlah_standar_port" class="input-field"></td>
+                <td><input type="number" id="jumlah_allfg_port" class="input-field"></td>
+                <td><input type="number" id="jumlah_sampel_port" class="input-field"></td>
+                <td><input type="number" id="jumlah_spesimen_port" class="input-field"></td>
+                <td><input type="number" id="total_rejectpr_port" class="input-field"></td>
+                <td><input type="number" id="total_rejectbk_port" class="input-field"></td>
+                <td><input type="number" id="total_rejectll_port" class="input-field"></td>
+                <td><input type="number" id="fkm_port" class="input-field"></td>
+                <td><input type="number" id="sisa_teoritis_port" class="readonly-field" readonly></td>
+                <td><input type="number" id="sisa_aktual_port" class="input-field"></td>
+                <td><input type="number" id="selisih_port" class="readonly-field" readonly></td>
+            </tr>
+            <tr>
+    <td class="material-label">Cap</td>
+    <td><input type="number" id="jumlah_standar_cap" class="input-field"></td>
+    <td><input type="number" id="jumlah_allfg_cap" class="input-field"></td>
+    <td><input type="number" id="jumlah_sampel_cap" class="input-field"></td>
+    <td><input type="number" id="jumlah_spesimen_cap" class="input-disabled-black" disabled></td>
+    <td><input type="number" id="total_rejectpr_cap" class="input-field"></td>
+    <td><input type="number" id="total_rejectbk_cap" class="input-disabled-black" disabled></td>
+    <td><input type="number" id="total_rejectll_cap" class="input-field"></td>
+    <td><input type="number" id="fkm_cap" class="input-field"></td>
+    <td><input type="number" id="sisa_teoritis_cap" class="readonly-field" readonly></td>
+    <td><input type="number" id="sisa_aktual_cap" class="input-field"></td>
+    <td><input type="number" id="selisih_cap" class="readonly-field" readonly></td>
+</tr>
+        </tbody>
+    </table>
+</div>
+<h2 class="main-title">Tabel Berita Acara Pemusnahan</h2>
+<div class="table-container">
+    <table id="table_berita_acara" class="lot-table flexible-table">
+        <thead>
+            <tr class="bg-navy">
+                <th rowspan="2">Nama Material</th>
+                <th rowspan="2">Keterangan Reject</th>
+                <th colspan="5">Reject Per Lot</th>
+                <th rowspan="2">Total Reject</th>
+                <th rowspan="2">Reject (PR,BK,LL)</th>
+                <th rowspan="2">Selisih</th>
+            </tr>
+            <tr class="bg-green-pekat">
+                <th>LOT A</th>
+                <th>LOT B</th>
+                <th>LOT C</th>
+                <th>LOT D</th>
+                <th>LOT E</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="3" class="text-center">Fb Film</th>
+                <th class="text-center">Total Reject FB Film</th>
+                <td><input type="number" id="reject_total_lotA_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotB_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotC_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotD_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotE_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td rowspan="3"><input type="number" id="reject_prbkll_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="selisih_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+            </tr>
+            <tr>
+                <th class="text-center">Reject IPC + Filling</th>
+                <td><input type="number" id="reject_ipc_filling_lotA_reject_fb" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotB_reject_fb" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotC_reject_fb" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotD_reject_fb" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotE_reject_fb" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_total_reject_fb" class="readonly-field bg-lightgreen" readonly></td>
+                <td class="bg-lightgreen"></td> </tr>
+                            <tr>
+                    <th class="text-center">Reject Lainya</th>
+                    <td><input type="number" id="reject_lainya_lotA_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                    <td><input type="number" id="reject_lainya_lotB_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                    <td><input type="number" id="reject_lainya_lotC_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                    <td><input type="number" id="reject_lainya_lotD_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                    <td><input type="number" id="reject_lainya_lotE_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                    <td><input type="number" id="reject_lainya_total_reject_fb_film" class="readonly-field bg-lightgreen" readonly></td>
+                    <td class="bg-lightgreen"></td>
+                </tr>
+            <tr>
+                <th rowspan="3" class="text-center">Port</th>
+                <th class="text-center">Total Reject Port</th>
+                <td><input type="number" id="reject_total_lotA_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotB_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotC_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotD_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_lotE_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_total_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td rowspan="3"><input type="number" id="reject_prbkll_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="selisih_port" class="readonly-field bg-lightgreen" readonly></td>
+            </tr>
+            <tr>
+                <th class="text-center">Reject IPC + Filling</th>
+                <td><input type="number" id="reject_ipc_filling_lotA_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotB_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotC_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotD_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_lotE_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td><input type="number" id="reject_ipc_filling_total_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td class="bg-lightgreen"></td>
+            </tr>
+            <tr>
+                <th class="text-center">Reject Lainya</th>
+                <td><input type="number" id="reject_lainya_lotA_port" class="input-field bg-lightgreen"></td>
+                <td><input type="number" id="reject_lainya_lotB_port" class="input-field bg-lightgreen"></td>
+                <td><input type="number" id="reject_lainya_lotC_port" class="input-field bg-lightgreen"></td>
+                <td><input type="number" id="reject_lainya_lotD_port" class="input-field bg-lightgreen"></td>
+                <td><input type="number" id="reject_lainya_lotE_port" class="input-field bg-lightgreen"></td>
+                <td><input type="number" id="reject_lainya_total_reject_port" class="readonly-field bg-lightgreen" readonly></td>
+                <td class="bg-lightgreen"></td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
