@@ -1,4 +1,134 @@
-<!DOCTYPE html>
+/* --- CSS STYLE UTAMA --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Pembungkus agar tabel berjejer rapi */
+.main-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+/* Spesifikasi Tabel: Lebar 330px */
+.lot-table {
+    width: 330px;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.lot-table th, .lot-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.lot-table th {
+    text-align: left;
+    width: 60%;
+}
+
+/* Heading Tabel (Header LOT) */
+thead th {
+    text-align: center !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px;
+}
+
+/* --- PERBAIKAN WARNA HEADER (PASTIKAN CLASS INI ADA DI HTML) --- */
+.bg-green th { 
+    background-color: #00FF00 !important; 
+    color: black !important; 
+} /* LOT A */
+
+.bg-orange th { 
+    background-color: #FFA500 !important; 
+    color: black !important; 
+} /* LOT B */
+
+.bg-purple th { 
+    background-color: #800080 !important; 
+    color: white !important; 
+} /* LOT C */
+
+.bg-yellow th { 
+    background-color: #FFFF00 !important; 
+    color: black !important; 
+} /* LOT D */
+
+.bg-lightblue th { 
+    background-color: #ADD8E6 !important; 
+    color: black !important; 
+} /* LOT E */
+
+.bg-gray th { 
+    background-color: #808080 !important; 
+    color: white !important; 
+} /* RANGKUMAN */
+
+/* --- STYLING INPUT --- */
+input[type=number] {
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    background: transparent;
+    font-size: 14px;
+}
+
+/* Menghilangkan Spinner */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.readonly-field {
+    background-color: #eeeeee !important;
+    color: #555;
+    cursor: not-allowed;
+}
+
+/* --- TOMBOL RESET --- */
+.btn-reset {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-reset:hover {
+    background-color: #cc0000;
+}
+
+tfoot td {
+    padding: 0 !important;
+    border: none !important;
+}
+.lot-table tbody tr:hover {
+    background-color: #f9f9f9;
+}<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +137,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1 class="main-title">Rekonsiliasi Produk Filling</h1>
 
-<div class="main-wrapper">
+    <div class="main-wrapper">
+
     <table class="lot-table" id="table_A">
         <thead>
             <tr class="bg-green">
