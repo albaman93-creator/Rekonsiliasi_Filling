@@ -126,3 +126,6 @@ tfoot td {
     padding: 0 !important;
     border: none !important;
 }
+.lot-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
