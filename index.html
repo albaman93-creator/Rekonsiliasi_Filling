@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan LOT Produksi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-wrapper">
+    <table class="lot-table" id="table_A">
+        <thead>
+            <tr class="bg-green">
+                <th colspan="2">LOT A</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Carload 1</th><td><input type="number" id="carload_A1" class="input-field"></td></tr>
+            <tr><th>Carload 2</th><td><input type="number" id="carload_A2" class="input-field"></td></tr>
+            <tr><th>Total FG Lot A</th><td><input type="number" id="total_fg_lotA" class="readonly-field" readonly></td></tr>
+            <tr><th>Retain FB Lot A</th><td><input type="number" id="retain_fb_lotA" class="input-field"></td></tr>
+            <tr><th>Spesimen Lot A</th><td><input type="number" id="spesimen_lotA" class="input-field"></td></tr>
+            <tr><th>Sampel Lot A</th><td><input type="number" id="sampel_lotA" class="input-field"></td></tr>
+            <tr><th>Integrity Seal Lot A</th><td><input type="number" id="integrity_seal_lotA" class="input-field"></td></tr>
+            <tr><th>Bag Press Lot A</th><td><input type="number" id="bag_press_lotA" class="input-field"></td></tr>
+            <tr><th>Total Reject Lot A</th><td><input type="number" id="total_reject_lotA" class="input-field"></td></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn-reset" onclick="resetTable('table_A')">Reset Tabel A</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="lot-table" id="table_B">
+        <thead>
+            <tr class="bg-orange">
+                <th colspan="2">LOT B</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Carload 1</th><td><input type="number" id="carload_B1" class="input-field"></td></tr>
+            <tr><th>Carload 2</th><td><input type="number" id="carload_B2" class="input-field"></td></tr>
+            <tr><th>Total FG Lot B</th><td><input type="number" id="total_fg_lotB" class="readonly-field" readonly></td></tr>
+            <tr><th>Retain FB Lot B</th><td><input type="number" id="retain_fb_lotB" class="input-field"></td></tr>
+            <tr><th>Spesimen Lot B</th><td><input type="number" id="spesimen_lotB" class="input-field"></td></tr>
+            <tr><th>Sampel Lot B</th><td><input type="number" id="sampel_lotB" class="input-field"></td></tr>
+            <tr><th>Integrity Seal Lot B</th><td><input type="number" id="integrity_seal_lotB" class="input-field"></td></tr>
+            <tr><th>Bag Press Lot B</th><td><input type="number" id="bag_press_lotB" class="input-field"></td></tr>
+            <tr><th>Total Reject Lot B</th><td><input type="number" id="total_reject_lotB" class="input-field"></td></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn-reset" onclick="resetTable('table_B')">Reset Tabel B</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="lot-table" id="table_C">
+        <thead>
+            <tr class="bg-purple">
+                <th colspan="2">LOT C</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Carload 1</th><td><input type="number" id="carload_C1" class="input-field"></td></tr>
+            <tr><th>Carload 2</th><td><input type="number" id="carload_C2" class="input-field"></td></tr>
+            <tr><th>Total FG Lot C</th><td><input type="number" id="total_fg_lotC" class="readonly-field" readonly></td></tr>
+            <tr><th>Retain FB Lot C</th><td><input type="number" id="retain_fb_lotC" class="input-field"></td></tr>
+            <tr><th>Spesimen Lot C</th><td><input type="number" id="spesimen_lotC" class="input-field"></td></tr>
+            <tr><th>Sampel Lot C</th><td><input type="number" id="sampel_lotC" class="input-field"></td></tr>
+            <tr><th>Integrity Seal Lot C</th><td><input type="number" id="integrity_seal_lotC" class="input-field"></td></tr>
+            <tr><th>Bag Press Lot C</th><td><input type="number" id="bag_press_lotC" class="input-field"></td></tr>
+            <tr><th>Total Reject Lot C</th><td><input type="number" id="total_reject_lotC" class="input-field"></td></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn-reset" onclick="resetTable('table_C')">Reset Tabel C</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="lot-table" id="table_D">
+        <thead>
+            <tr class="bg-yellow">
+                <th colspan="2">LOT D</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Carload 1</th><td><input type="number" id="carload_D1" class="input-field"></td></tr>
+            <tr><th>Carload 2</th><td><input type="number" id="carload_D2" class="input-field"></td></tr>
+            <tr><th>Total FG Lot D</th><td><input type="number" id="total_fg_lotD" class="readonly-field" readonly></td></tr>
+            <tr><th>Retain FB Lot D</th><td><input type="number" id="retain_fb_lotD" class="input-field"></td></tr>
+            <tr><th>Spesimen Lot D</th><td><input type="number" id="spesimen_lotD" class="input-field"></td></tr>
+            <tr><th>Sampel Lot D</th><td><input type="number" id="sampel_lotD" class="input-field"></td></tr>
+            <tr><th>Integrity Seal Lot D</th><td><input type="number" id="integrity_seal_lotD" class="input-field"></td></tr>
+            <tr><th>Bag Press Lot D</th><td><input type="number" id="bag_press_lotD" class="input-field"></td></tr>
+            <tr><th>Total Reject Lot D</th><td><input type="number" id="total_reject_lotD" class="input-field"></td></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn-reset" onclick="resetTable('table_D')">Reset Tabel D</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="lot-table" id="table_E">
+        <thead>
+            <tr class="bg-lightblue">
+                <th colspan="2">LOT E</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Carload 1</th><td><input type="number" id="carload_E1" class="input-field"></td></tr>
+            <tr><th>Jumlah Bag per Layer</th><td><input type="number" id="bag_per_layer_E" class="input-field"></td></tr>
+            <tr><th>Jumlah Layer</th><td><input type="number" id="jumlah_layer_E" class="input-field"></td></tr>
+            <tr><th>Bag Recehan</th><td><input type="number" id="bag_recehan_E" class="input-field"></td></tr>
+            <tr><th>Carload 2</th><td><input type="number" id="carload_E2" class="readonly-field" readonly></td></tr>
+            <tr><th>Total FG Lot E</th><td><input type="number" id="total_fg_lotE" class="readonly-field" readonly></td></tr>
+            <tr><th>Retain FB Lot E</th><td><input type="number" id="retain_fb_lotE" class="input-field"></td></tr>
+            <tr><th>Spesimen Lot E</th><td><input type="number" id="spesimen_lotE" class="input-field"></td></tr>
+            <tr><th>Sampel Lot E</th><td><input type="number" id="sampel_lotE" class="input-field"></td></tr>
+            <tr><th>Integrity Seal Lot E</th><td><input type="number" id="integrity_seal_lotE" class="input-field"></td></tr>
+            <tr><th>Bag Press Lot E</th><td><input type="number" id="bag_press_lotE" class="input-field"></td></tr>
+            <tr><th>Total Reject Lot E</th><td><input type="number" id="total_reject_lotE" class="input-field"></td></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn-reset" onclick="resetTable('table_E')">Reset Tabel E</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="lot-table" id="table_summary">
+        <thead>
+            <tr class="bg-gray">
+                <th colspan="2">Rangkuman Semua LOT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Total FG Semua LOT</th><td><input type="number" id="total_fg_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Retain FB Semua LOT</th><td><input type="number" id="total_retain_fb_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Spesimen Semua LOT</th><td><input type="number" id="total_spesimen_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Sampel Semua LOT</th><td><input type="number" id="total_sampel_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Integrity Seal Semua LOT</th><td><input type="number" id="total_integrity_seal_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Bag Press Semua LOT</th><td><input type="number" id="total_bag_press_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Reject Semua LOT</th><td><input type="number" id="total_reject_semua_lot" class="readonly-field" readonly></td></tr>
+            <tr><th>Total Seluruh FG</th><td><input type="number" id="total_seluruh_fg" class="readonly-field" readonly></td></tr>
+            <tr><th>Jumlah Batch Size</th><td><input type="number" id="jumlah_batch_size" class="input-field"></td></tr>
+            <tr><th>Perbedaan</th><td><input type="number" id="perbedaan" class="readonly-field" readonly></td></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn-reset" onclick="resetTable('table_summary')">Reset Rangkuman</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
