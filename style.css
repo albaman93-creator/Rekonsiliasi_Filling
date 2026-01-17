@@ -284,10 +284,14 @@ tfoot td {
     font-size: 11px;
 }
 
+/* Update CSS ini di bagian paling bawah file style.css */
+
+/* Gunakan selector yang lebih spesifik agar menang dari style readonly */
+.flexible-table input.bg-lightgreen, 
 .bg-lightgreen {
     background-color: #90EE90 !important; /* Light Green */
+    color: black !important; /* Pastikan teks tetap hitam */
 }
-
 .text-center {
     text-align: center !important;
     vertical-align: middle;
